@@ -25,21 +25,33 @@
 
 <body>
 
-  <!-- =====================================================
+
+  <!-- ======================================================
        HEADER
-  ====================================================== -->
+  ======================================================= -->
 
   <header class="site-header">
 
-    <a class="brand" href="#home">
+    <a
+      class="brand"
+      href="#home"
+      aria-label="Rahul Gupta Portfolio Home"
+    >
 
       <span class="brand-mark">
         RG
       </span>
 
       <span class="brand-copy">
-        <strong>Rahul Gupta</strong>
-        <small>Cybersecurity</small>
+
+        <strong>
+          Rahul Gupta
+        </strong>
+
+        <small>
+          Cybersecurity
+        </small>
+
       </span>
 
     </a>
@@ -47,20 +59,39 @@
 
     <button
       class="menu-toggle"
+      type="button"
       aria-label="Open navigation"
       aria-expanded="false"
     >
-      Menu
+      <span>Menu</span>
+      <i>↘</i>
     </button>
 
 
-    <nav class="site-nav">
+    <nav
+      class="site-nav"
+      aria-label="Main navigation"
+    >
 
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#learning">Learning</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#roles">Focus Areas</a>
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#projects">
+        Projects
+      </a>
+
+      <a href="#learning">
+        Learning
+      </a>
+
+      <a href="#certifications">
+        Certifications
+      </a>
+
+      <a href="#roles">
+        Focus
+      </a>
 
     </nav>
 
@@ -71,13 +102,15 @@
   <main>
 
 
-    <!-- =====================================================
+    <!-- ======================================================
          HERO
-    ====================================================== -->
+    ======================================================= -->
 
-    <section class="hero" id="home">
+    <section
+      class="hero"
+      id="home"
+    >
 
-      <!-- Green Matrix Animation -->
       <canvas
         id="matrixCanvas"
         aria-hidden="true"
@@ -85,23 +118,28 @@
 
       <div class="hero-overlay"></div>
 
-
-      <!-- decorative curves -->
-
       <div class="hero-curve curve-one"></div>
+
       <div class="hero-curve curve-two"></div>
+
 
 
       <div class="hero-inner">
 
 
-        <!-- HERO COPY -->
+        <!-- HERO TEXT -->
 
         <div class="hero-copy reveal">
 
+
           <div class="hero-badge">
+
             <span class="status-dot"></span>
-            Building • Testing • Learning
+
+            <span>
+              Learning → Testing → Building
+            </span>
+
           </div>
 
 
@@ -111,17 +149,26 @@
 
 
           <h1>
+
             Rahul
-            <span>Kumar Gupta.</span>
+
+            <span>
+              Kumar Gupta.
+            </span>
+
           </h1>
 
 
           <p class="hero-role">
 
             Cybersecurity
-            <span class="role-divider">/</span>
+
+            <i>→</i>
+
             VAPT
-            <span class="role-divider">/</span>
+
+            <i>→</i>
+
             Penetration Testing
 
           </p>
@@ -132,65 +179,69 @@
             I understand systems, test them safely,
             document weaknesses and learn how to fix them.
 
-            <strong>Legally.</strong>
+            <strong>
+              Legally.
+            </strong>
 
           </p>
 
 
-          <div class="actions">
+
+          <!-- PRIMARY CTA -->
+
+          <div class="actions hero-actions">
 
             <a
               class="btn primary"
               href="#projects"
             >
-              Explore Projects
-              <span>↘</span>
+
+              View Projects
+
+              <span>
+                ↓
+              </span>
+
             </a>
 
 
             <a
-              class="btn"
+              class="btn icon-btn"
               href="https://github.com/rahulcyberepo"
               target="_blank"
               rel="noreferrer"
             >
               GitHub
+              <span>↗</span>
             </a>
 
 
             <a
-              class="btn"
-              href="https://www.linkedin.com/in/rahul-kumar-gupta-cyber-security-analyst"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-
-
-            <a
-              class="btn"
+              class="btn icon-btn"
               href="https://tryhackme.com/p/rahulcyberlabs"
               target="_blank"
               rel="noreferrer"
             >
               TryHackMe
+              <span>↗</span>
             </a>
 
           </div>
 
 
 
-          <!-- proof numbers -->
+          <!-- HERO STATS -->
 
           <div class="proof-row">
 
             <div>
 
-              <strong>50+</strong>
+              <strong>
+                50+
+              </strong>
 
               <span>
-                Hands-on security labs
+                Security labs
               </span>
 
             </div>
@@ -198,10 +249,12 @@
 
             <div>
 
-              <strong>03</strong>
+              <strong>
+                03
+              </strong>
 
               <span>
-                Completed certifications
+                Certifications
               </span>
 
             </div>
@@ -209,10 +262,12 @@
 
             <div>
 
-              <strong>01</strong>
+              <strong>
+                01
+              </strong>
 
               <span>
-                Certification in progress
+                In progress
               </span>
 
             </div>
@@ -223,28 +278,31 @@
 
 
 
-        <!-- HERO RIGHT SIDE -->
+        <!-- HERO RIGHT -->
 
         <div class="hero-visual reveal">
 
 
-          <!-- =================================================
-               MAIN CHIBI
-               Cute Grim-Reaper inspired neutral / angel form
-          ================================================== -->
+          <!-- SMALL HERO CHIBI -->
 
-          <div class="chibi-scene hero-chibi">
+          <div class="hero-character-zone">
 
-
-            <span class="chibi-orbit orbit-one"></span>
-            <span class="chibi-orbit orbit-two"></span>
+            <span class="orbit orbit-a"></span>
+            <span class="orbit orbit-b"></span>
 
 
-            <div class="chibi chibi-angel pose-float">
+            <div
+              class="chibi chibi-angel chibi-compact interactive-chibi"
+              tabindex="0"
+              data-chibi-action="float"
+              aria-label="Angel cybersecurity mascot"
+            >
 
               <div class="chibi-halo"></div>
 
+
               <div class="chibi-wing wing-left"></div>
+
               <div class="chibi-wing wing-right"></div>
 
 
@@ -253,6 +311,7 @@
                 <div class="chibi-face">
 
                   <span class="chibi-eye eye-one"></span>
+
                   <span class="chibi-eye eye-two"></span>
 
                   <span class="chibi-mouth"></span>
@@ -264,32 +323,17 @@
 
               <div class="chibi-body">
 
-                <div class="chibi-emblem">
+                <span class="chibi-emblem">
                   +
-                </div>
-
-              </div>
-
-
-              <div class="chibi-arm arm-left"></div>
-              <div class="chibi-arm arm-right"></div>
-
-
-              <div class="chibi-feet">
-                <span></span>
-                <span></span>
-              </div>
-
-
-              <div class="mini-scythe">
-
-                <span class="scythe-stick"></span>
-                <span class="scythe-blade"></span>
+                </span>
 
               </div>
 
             </div>
 
+
+
+            <!-- FLOATING CYBER ICONS -->
 
             <span class="floating-symbol symbol-one">
               01
@@ -303,6 +347,7 @@
               #
             </span>
 
+
           </div>
 
 
@@ -311,17 +356,19 @@
 
           <div
             class="hero-terminal"
-            aria-label="Portfolio focus"
+            aria-label="Portfolio focus terminal"
           >
 
             <div class="terminal-bar">
 
-              <span></span>
-              <span></span>
-              <span></span>
+              <div class="terminal-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
 
               <small>
-                rahul@portfolio:~
+                rahul@portfolio
               </small>
 
             </div>
@@ -339,31 +386,33 @@
               </p>
 
 
-
               <p>
                 <span class="prompt">$</span>
                 focus
               </p>
 
               <p class="terminal-output">
-                Penetration Testing
-                <br>
-                Cybersecurity Analysis
-                <br>
-                Web Security
-                <br>
-                Security Research
-              </p>
 
+                Penetration Testing
+
+                <br>
+
+                Web Security
+
+                <br>
+
+                Security Analysis
+
+              </p>
 
 
               <p>
                 <span class="prompt">$</span>
-                philosophy
+                mindset
               </p>
 
               <p class="terminal-output">
-                learn → test → document → improve
+                learn → test → improve
               </p>
 
             </div>
@@ -372,47 +421,83 @@
 
         </div>
 
-      </div>
-
-
-      <div class="scroll-indicator">
-
-        <span>Scroll to explore</span>
-
-        <i>↓</i>
 
       </div>
+
+
+
+      <a
+        class="section-arrow hero-next"
+        href="#about"
+        aria-label="Continue to about section"
+      >
+
+        <span>
+          Explore
+        </span>
+
+        <i>
+          ↓
+        </i>
+
+      </a>
 
     </section>
 
 
 
 
-    <!-- =====================================================
+    <!-- ======================================================
          ABOUT
-    ====================================================== -->
+    ======================================================= -->
 
-    <section class="section section-shell" id="about">
+    <section
+      class="section section-shell"
+      id="about"
+    >
 
 
-      <!-- CHIBI -->
+      <div class="section-top-row">
 
-      <div class="section-chibi chibi-corner chibi-corner-right">
+        <div>
 
-        <div class="chibi-mini chibi-angel pose-read">
+          <div class="section-label">
+            01 / About
+          </div>
+
+          <p class="section-kicker">
+            Foundation first.
+          </p>
+
+        </div>
+
+
+
+        <!-- SMALL CHIBI -->
+
+        <div
+          class="chibi-mini chibi-angel interactive-chibi pose-read"
+          tabindex="0"
+          data-chibi-action="read"
+        >
 
           <div class="mini-halo"></div>
+
 
           <div class="mini-hood">
 
             <div class="mini-face">
+
               <i></i>
               <i></i>
+
             </div>
 
           </div>
 
+
           <div class="mini-body"></div>
+
 
           <div class="mini-book">
             101
@@ -424,29 +509,20 @@
 
 
 
-      <div class="section-label">
-        01 / About
-      </div>
-
-
       <div class="split">
 
 
         <div class="about-heading">
 
-          <p class="mini-heading">
-            Depth over hype.
-          </p>
-
           <h2>
 
-            I’m building
+            Depth
 
             <span class="highlight-text">
-              depth,
+              over
             </span>
 
-            not a tool list.
+            tool collecting.
 
           </h2>
 
@@ -467,30 +543,27 @@
 
           <p>
 
-            My previous work with websites, analytics,
-            troubleshooting and communicating findings has given
-            me useful habits in investigation, problem-solving
-            and documentation.
+            My previous experience with websites, analytics,
+            troubleshooting and documentation has helped me
+            build strong investigation and problem-solving habits.
 
           </p>
 
 
           <p>
 
-            I now apply those skills to security while treating
-            cybersecurity as a separate technical discipline that
-            must be proven through hands-on labs, projects,
-            testing, research and clear evidence of what I find
-            and how it can be fixed.
+            I now apply those skills to security through
+            hands-on labs, controlled testing, projects,
+            research and clear technical reporting.
 
           </p>
 
 
           <p>
 
-            Right now I’m strengthening networking, Linux,
+            Currently strengthening networking, Linux,
             Windows, web security, Active Directory,
-            Python automation and professional security reporting.
+            Python automation and reporting.
 
           </p>
 
@@ -499,30 +572,55 @@
       </div>
 
 
-      <!-- skills strip -->
 
       <div class="about-strip">
 
         <span>Networking</span>
+
         <span>Linux</span>
+
         <span>Windows</span>
-        <span>Web</span>
+
+        <span>Web Security</span>
+
         <span>VAPT</span>
+
         <span>Python</span>
+
         <span>Research</span>
 
       </div>
+
+
+
+      <a
+        class="section-arrow"
+        href="#projects"
+      >
+
+        <span>
+          See projects
+        </span>
+
+        <i>
+          ↓
+        </i>
+
+      </a>
 
     </section>
 
 
 
 
-    <!-- =====================================================
+    <!-- ======================================================
          PROJECTS
-    ====================================================== -->
+    ======================================================= -->
 
-    <section class="section" id="projects">
+    <section
+      class="section"
+      id="projects"
+    >
 
 
       <div class="section-heading">
@@ -533,17 +631,20 @@
 
 
         <h2>
+
           Selected security
-          <span>builds.</span>
+
+          <span>
+            builds.
+          </span>
+
         </h2>
 
 
         <p>
 
-          Planned work stays clearly labelled until
-          I have the evidence to show it properly.
-
-          No fake expertise. No imaginary results.
+          Projects remain marked as planned or building
+          until I have proper evidence to demonstrate them.
 
         </p>
 
@@ -554,26 +655,90 @@
       <div class="project-grid">
 
 
+
         <!-- PROJECT 01 -->
 
         <article class="project-card reveal">
 
-          <div class="project-chibi">
+
+          <div class="card-top">
+
+            <span>
+              01
+            </span>
+
+            <span class="status-pill building">
+              Building
+            </span>
+
+          </div>
+
+
+
+          <div class="project-content">
+
+            <h3>
+              Cybersecurity Home Lab + Network Discovery
+            </h3>
+
+
+            <p>
+
+              Build an isolated Kali, Ubuntu and Windows lab
+              to understand host discovery, ARP,
+              ports, services and traffic.
+
+            </p>
+
+
+            <div class="stack">
+              Nmap · Wireshark · Linux · TCP/IP
+            </div>
+
+
+            <button
+              class="project-detail"
+              data-project="lab"
+              type="button"
+            >
+
+              View scope
+
+              <span>
+                →
+              </span>
+
+            </button>
+
+          </div>
+
+
+
+          <div
+            class="project-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="type"
+          >
 
             <div class="chibi-mini chibi-angel pose-laptop">
 
               <div class="mini-halo"></div>
 
+
               <div class="mini-hood">
 
                 <div class="mini-face">
+
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
+
               <div class="mini-body"></div>
+
 
               <div class="mini-laptop">
                 &gt;_
@@ -583,46 +748,8 @@
 
           </div>
 
-
-          <div class="card-top">
-
-            <span>01</span>
-
-            <span class="status-pill building">
-              Building
-            </span>
-
-          </div>
-
-
-          <h3>
-            Cybersecurity Home Lab + Network Discovery
-          </h3>
-
-
-          <p>
-
-            Build an isolated Kali, Ubuntu and Windows lab
-            to understand host discovery, ARP, ports,
-            services and traffic.
-
-          </p>
-
-
-          <div class="stack">
-            Nmap · Wireshark · Linux · Windows · TCP/IP
-          </div>
-
-
-          <button
-            class="project-detail"
-            data-project="lab"
-          >
-            View project scope
-            <span>→</span>
-          </button>
-
         </article>
+
 
 
 
@@ -630,25 +757,89 @@
 
         <article class="project-card reveal">
 
-          <div class="project-chibi">
+
+          <div class="card-top">
+
+            <span>
+              02
+            </span>
+
+            <span class="status-pill">
+              Planned
+            </span>
+
+          </div>
+
+
+
+          <div class="project-content">
+
+            <h3>
+              Linux Security + Hardening
+            </h3>
+
+
+            <p>
+
+              Assess a Linux host, identify weak permissions,
+              exposed services and security issues,
+              then harden and retest.
+
+            </p>
+
+
+            <div class="stack">
+              Ubuntu · SSH · Firewall · Bash
+            </div>
+
+
+            <button
+              class="project-detail"
+              data-project="linux"
+              type="button"
+            >
+
+              View scope
+
+              <span>
+                →
+              </span>
+
+            </button>
+
+          </div>
+
+
+
+          <div
+            class="project-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="guard"
+          >
 
             <div class="chibi-mini chibi-devil pose-guard">
+
 
               <div class="mini-horns">
                 <i></i>
                 <i></i>
               </div>
 
+
               <div class="mini-hood">
 
                 <div class="mini-face evil">
+
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
+
               <div class="mini-body"></div>
+
 
               <div class="mini-shield">
                 #
@@ -658,46 +849,8 @@
 
           </div>
 
-
-          <div class="card-top">
-
-            <span>02</span>
-
-            <span class="status-pill">
-              Planned
-            </span>
-
-          </div>
-
-
-          <h3>
-            Linux Security + Hardening
-          </h3>
-
-
-          <p>
-
-            Assess a Linux host, identify weak permissions
-            and exposed services, harden it and retest
-            the changes.
-
-          </p>
-
-
-          <div class="stack">
-            Ubuntu · SSH · Permissions · Firewall · Bash
-          </div>
-
-
-          <button
-            class="project-detail"
-            data-project="linux"
-          >
-            View project scope
-            <span>→</span>
-          </button>
-
         </article>
+
 
 
 
@@ -705,35 +858,12 @@
 
         <article class="project-card reveal">
 
-          <div class="project-chibi">
-
-            <div class="chibi-mini chibi-angel pose-search">
-
-              <div class="mini-halo"></div>
-
-              <div class="mini-hood">
-
-                <div class="mini-face">
-                  <i></i>
-                  <i></i>
-                </div>
-
-              </div>
-
-              <div class="mini-body"></div>
-
-              <div class="mini-magnifier">
-                ◯
-              </div>
-
-            </div>
-
-          </div>
-
 
           <div class="card-top">
 
-            <span>03</span>
+            <span>
+              03
+            </span>
 
             <span class="status-pill">
               Planned
@@ -742,34 +872,80 @@
           </div>
 
 
-          <h3>
-            Network Traffic Investigation
-          </h3>
+
+          <div class="project-content">
+
+            <h3>
+              Network Traffic Investigation
+            </h3>
 
 
-          <p>
+            <p>
 
-            Analyze packet captures to reconstruct DNS,
-            TCP and HTTP activity and produce a short
-            investigation report.
+              Analyze packet captures and reconstruct
+              DNS, TCP and HTTP communication.
 
-          </p>
+            </p>
 
 
-          <div class="stack">
-            Wireshark · PCAP · DNS · TCP · HTTP
+            <div class="stack">
+              Wireshark · PCAP · DNS · TCP
+            </div>
+
+
+            <button
+              class="project-detail"
+              data-project="pcap"
+              type="button"
+            >
+
+              View scope
+
+              <span>
+                →
+              </span>
+
+            </button>
+
           </div>
 
 
-          <button
-            class="project-detail"
-            data-project="pcap"
+
+          <div
+            class="project-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="search"
           >
-            View project scope
-            <span>→</span>
-          </button>
+
+            <div class="chibi-mini chibi-angel pose-search">
+
+
+              <div class="mini-halo"></div>
+
+
+              <div class="mini-hood">
+
+                <div class="mini-face">
+
+                  <i></i>
+                  <i></i>
+
+                </div>
+
+              </div>
+
+
+              <div class="mini-body"></div>
+
+
+              <div class="mini-magnifier"></div>
+
+            </div>
+
+          </div>
 
         </article>
+
 
 
 
@@ -777,25 +953,91 @@
 
         <article class="project-card reveal">
 
-          <div class="project-chibi">
+
+          <div class="card-top">
+
+            <span>
+              04
+            </span>
+
+            <span class="status-pill">
+              Planned
+            </span>
+
+          </div>
+
+
+
+          <div class="project-content">
+
+            <h3>
+              Vulnerability Assessment + Manual Validation
+            </h3>
+
+
+            <p>
+
+              Compare scanner results with manual checks
+              to identify real vulnerabilities,
+              false positives and misconfigurations.
+
+            </p>
+
+
+            <div class="stack">
+              Nmap · Nessus · Nikto · Reporting
+            </div>
+
+
+            <button
+              class="project-detail"
+              data-project="va"
+              type="button"
+            >
+
+              View scope
+
+              <span>
+                →
+              </span>
+
+            </button>
+
+          </div>
+
+
+
+          <div
+            class="project-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="scan"
+          >
 
             <div class="chibi-mini chibi-devil pose-scan">
 
+
               <div class="mini-horns">
+
                 <i></i>
                 <i></i>
+
               </div>
+
 
               <div class="mini-hood">
 
                 <div class="mini-face evil">
+
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
+
               <div class="mini-body"></div>
+
 
               <div class="mini-radar">
                 ◎
@@ -805,10 +1047,21 @@
 
           </div>
 
+        </article>
+
+
+
+
+        <!-- PROJECT 05 -->
+
+        <article class="project-card reveal">
+
 
           <div class="card-top">
 
-            <span>04</span>
+            <span>
+              05
+            </span>
 
             <span class="status-pill">
               Planned
@@ -817,60 +1070,77 @@
           </div>
 
 
-          <h3>
-            Vulnerability Assessment + Manual Validation
-          </h3>
+
+          <div class="project-content">
+
+            <h3>
+              Web Application VAPT
+            </h3>
 
 
-          <p>
+            <p>
 
-            Compare scanner findings with manual checks
-            to separate real vulnerabilities,
-            false positives and misconfigurations.
+              Test a deliberately vulnerable web application
+              with focus on impact, root cause,
+              remediation and retesting.
 
-          </p>
+            </p>
 
 
-          <div class="stack">
-            Nmap · Nessus · Nikto · Reporting
+            <div class="stack">
+              Burp Suite · HTTP · OWASP · Auth
+            </div>
+
+
+            <button
+              class="project-detail"
+              data-project="web"
+              type="button"
+            >
+
+              View scope
+
+              <span>
+                →
+              </span>
+
+            </button>
+
           </div>
 
 
-          <button
-            class="project-detail"
-            data-project="va"
+
+          <div
+            class="project-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="hack"
           >
-            View project scope
-            <span>→</span>
-          </button>
-
-        </article>
-
-
-
-        <!-- PROJECT 05 -->
-
-        <article class="project-card reveal">
-
-          <div class="project-chibi">
 
             <div class="chibi-mini chibi-devil pose-web">
 
+
               <div class="mini-horns">
+
                 <i></i>
                 <i></i>
+
               </div>
+
 
               <div class="mini-hood">
 
                 <div class="mini-face evil">
+
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
+
               <div class="mini-body"></div>
+
 
               <div class="mini-web">
                 &lt;/&gt;
@@ -880,10 +1150,21 @@
 
           </div>
 
+        </article>
+
+
+
+
+        <!-- PROJECT 06 -->
+
+        <article class="project-card reveal">
+
 
           <div class="card-top">
 
-            <span>05</span>
+            <span>
+              06
+            </span>
 
             <span class="status-pill">
               Planned
@@ -892,57 +1173,72 @@
           </div>
 
 
-          <h3>
-            Web Application VAPT
-          </h3>
+
+          <div class="project-content">
+
+            <h3>
+              VAPT Workflow Automation
+            </h3>
 
 
-          <p>
+            <p>
 
-            Test a deliberately vulnerable web application
-            with focus on root cause, impact,
-            remediation and retest.
+              Build a Python utility that automates
+              repetitive assessment work such as
+              evidence organization or Nmap parsing.
 
-          </p>
+            </p>
 
 
-          <div class="stack">
-            Burp Suite · HTTP · Auth · Access Control · OWASP
+            <div class="stack">
+              Python · XML · JSON · Git
+            </div>
+
+
+            <button
+              class="project-detail"
+              data-project="automation"
+              type="button"
+            >
+
+              View scope
+
+              <span>
+                →
+              </span>
+
+            </button>
+
           </div>
 
 
-          <button
-            class="project-detail"
-            data-project="web"
+
+          <div
+            class="project-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="code"
           >
-            View project scope
-            <span>→</span>
-          </button>
-
-        </article>
-
-
-
-        <!-- PROJECT 06 -->
-
-        <article class="project-card reveal">
-
-          <div class="project-chibi">
 
             <div class="chibi-mini chibi-angel pose-code">
 
+
               <div class="mini-halo"></div>
+
 
               <div class="mini-hood">
 
                 <div class="mini-face">
+
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
+
               <div class="mini-body"></div>
+
 
               <div class="mini-code">
                 { }
@@ -952,81 +1248,79 @@
 
           </div>
 
-
-          <div class="card-top">
-
-            <span>06</span>
-
-            <span class="status-pill">
-              Planned
-            </span>
-
-          </div>
-
-
-          <h3>
-            VAPT Workflow Automation
-          </h3>
-
-
-          <p>
-
-            Build a small Python utility for a real assessment
-            workflow such as parsing Nmap XML
-            or organizing evidence.
-
-          </p>
-
-
-          <div class="stack">
-            Python · XML · JSON · CSV · Git
-          </div>
-
-
-          <button
-            class="project-detail"
-            data-project="automation"
-          >
-            View project scope
-            <span>→</span>
-          </button>
-
         </article>
 
       </div>
 
 
 
+      <!-- ROADMAP -->
+
       <div class="roadmap-note reveal">
+
 
         <span class="roadmap-icon">
           ↗
         </span>
 
+
         <div>
 
           <strong>
-            Later roadmap
+            Next direction
           </strong>
 
           <p>
-            API security, Active Directory, detection,
-            cloud, DevSecOps, AI security and
-            an enterprise capstone.
+
+            API Security
+
+            <span>→</span>
+
+            Active Directory
+
+            <span>→</span>
+
+            Cloud
+
+            <span>→</span>
+
+            DevSecOps
+
+            <span>→</span>
+
+            AI Security
+
           </p>
 
         </div>
 
       </div>
 
+
+
+      <a
+        class="section-arrow"
+        href="#learning"
+      >
+
+        <span>
+          Practical learning
+        </span>
+
+        <i>
+          ↓
+        </i>
+
+      </a>
+
     </section>
 
 
 
 
-    <!-- =====================================================
+    <!-- ======================================================
          LEARNING
-    ====================================================== -->
+    ======================================================= -->
 
     <section
       class="section section-shell"
@@ -1034,25 +1328,52 @@
     >
 
 
-      <div class="section-chibi chibi-corner chibi-corner-left">
+      <div class="section-top-row">
 
-        <div class="chibi-mini chibi-devil pose-study">
+
+        <div>
+
+          <div class="section-label">
+            03 / Practical Learning
+          </div>
+
+          <p class="section-kicker">
+            Practice before confidence.
+          </p>
+
+        </div>
+
+
+
+        <div
+          class="chibi-mini chibi-devil interactive-chibi pose-study"
+          tabindex="0"
+          data-chibi-action="study"
+        >
+
 
           <div class="mini-horns">
+
             <i></i>
             <i></i>
+
           </div>
+
 
           <div class="mini-hood">
 
             <div class="mini-face evil">
+
               <i></i>
               <i></i>
+
             </div>
 
           </div>
 
+
           <div class="mini-body"></div>
+
 
           <div class="mini-book">
             THM
@@ -1064,16 +1385,11 @@
 
 
 
-      <div class="section-label">
-        03 / Practical Learning
-      </div>
-
-
-
       <div class="learning-grid">
 
 
         <div class="learning-card reveal">
+
 
           <p class="big-number">
             50+
@@ -1081,17 +1397,22 @@
 
 
           <h2>
+
             TryHackMe
-            <span>hands-on labs.</span>
+
+            <span>
+              labs.
+            </span>
+
           </h2>
 
 
           <p>
 
-            Labs are where I practice individual techniques.
+            Labs help me practice techniques individually.
 
-            Projects are where I combine them into
-            larger investigations.
+            Projects help me combine those techniques into
+            complete investigations.
 
           </p>
 
@@ -1102,8 +1423,13 @@
             target="_blank"
             rel="noreferrer"
           >
-            Open TryHackMe Profile
-            <span>↗</span>
+
+            Open Profile
+
+            <span>
+              ↗
+            </span>
+
           </a>
 
         </div>
@@ -1112,38 +1438,85 @@
 
         <div class="topics reveal">
 
-          <span>Networking</span>
+          <span>
+            Networking
+            <i>→</i>
+          </span>
 
-          <span>Linux</span>
+          <span>
+            Linux
+            <i>→</i>
+          </span>
 
-          <span>Windows</span>
+          <span>
+            Windows
+            <i>→</i>
+          </span>
 
-          <span>Nmap & Enumeration</span>
+          <span>
+            Nmap
+            <i>→</i>
+          </span>
 
-          <span>Web Security</span>
+          <span>
+            Web Security
+            <i>→</i>
+          </span>
 
-          <span>OWASP Concepts</span>
+          <span>
+            OWASP
+            <i>→</i>
+          </span>
 
-          <span>Privilege Escalation</span>
+          <span>
+            Privilege Escalation
+            <i>→</i>
+          </span>
 
-          <span>Active Directory</span>
+          <span>
+            Active Directory
+            <i>→</i>
+          </span>
 
-          <span>Pentesting Methodology</span>
+          <span>
+            Pentesting
+            <i>→</i>
+          </span>
 
-          <span>Defensive Fundamentals</span>
+          <span>
+            Defensive Fundamentals
+            <i>→</i>
+          </span>
 
         </div>
 
       </div>
+
+
+
+      <a
+        class="section-arrow"
+        href="#certifications"
+      >
+
+        <span>
+          Certifications
+        </span>
+
+        <i>
+          ↓
+        </i>
+
+      </a>
 
     </section>
 
 
 
 
-    <!-- =====================================================
+    <!-- ======================================================
          CERTIFICATIONS
-    ====================================================== -->
+    ======================================================= -->
 
     <section
       class="section"
@@ -1153,6 +1526,7 @@
 
       <div class="section-heading compact">
 
+
         <div class="section-label">
           04 / Certifications
         </div>
@@ -1160,10 +1534,10 @@
 
         <h2>
 
-          Structured learning,
+          Structured learning
 
           <span>
-            backed by practice.
+            + practice.
           </span>
 
         </h2>
@@ -1175,9 +1549,14 @@
       <div class="cert-list">
 
 
+
+        <!-- CERT 01 -->
+
         <article class="cert-row reveal">
 
+
           <div class="cert-main">
+
 
             <span class="cert-number">
               01
@@ -1209,22 +1588,31 @@
           </p>
 
 
-          <div class="cert-chibi">
+          <div
+            class="cert-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="celebrate"
+          >
 
             <div class="chibi-mini chibi-angel pose-success">
 
               <div class="mini-halo"></div>
 
+
               <div class="mini-hood">
 
                 <div class="mini-face">
+
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
+
               <div class="mini-body"></div>
+
 
               <div class="mini-check">
                 ✓
@@ -1238,9 +1626,14 @@
 
 
 
+
+        <!-- CERT 02 -->
+
         <article class="cert-row reveal">
 
+
           <div class="cert-main">
+
 
             <span class="cert-number">
               02
@@ -1266,48 +1659,28 @@
           <p>
 
             Reconnaissance, enumeration,
-            web and network testing,
-            Active Directory,
-            exploitation workflow and reporting.
+            web testing, network testing,
+            Active Directory and reporting.
 
           </p>
 
 
-          <div class="cert-chibi">
-
-            <div class="chibi-mini chibi-devil pose-scythe">
-
-              <div class="mini-horns">
-                <i></i>
-                <i></i>
-              </div>
-
-              <div class="mini-hood">
-
-                <div class="mini-face evil">
-                  <i></i>
-                  <i></i>
-                </div>
-
-              </div>
-
-              <div class="mini-body"></div>
-
-              <div class="mini-scythe-small">
-                ☾
-              </div>
-
-            </div>
-
-          </div>
+          <span class="cert-arrow">
+            →
+          </span>
 
         </article>
 
 
 
+
+        <!-- CERT 03 -->
+
         <article class="cert-row reveal">
 
+
           <div class="cert-main">
+
 
             <span class="cert-number">
               03
@@ -1332,48 +1705,29 @@
 
           <p>
 
-            HTTP, authentication, authorization,
-            access control, manual validation
-            and remediation thinking.
+            HTTP, authentication,
+            authorization, access control,
+            validation and remediation.
 
           </p>
 
 
-          <div class="cert-chibi">
-
-            <div class="chibi-mini chibi-devil pose-web">
-
-              <div class="mini-horns">
-                <i></i>
-                <i></i>
-              </div>
-
-              <div class="mini-hood">
-
-                <div class="mini-face evil">
-                  <i></i>
-                  <i></i>
-                </div>
-
-              </div>
-
-              <div class="mini-body"></div>
-
-              <div class="mini-web">
-                WEB
-              </div>
-
-            </div>
-
-          </div>
+          <span class="cert-arrow">
+            →
+          </span>
 
         </article>
 
 
 
+
+        <!-- CERT 04 -->
+
         <article class="cert-row reveal">
 
+
           <div class="cert-main">
+
 
             <span class="cert-number">
               04
@@ -1405,22 +1759,32 @@
           </p>
 
 
-          <div class="cert-chibi">
+          <div
+            class="cert-chibi interactive-chibi"
+            tabindex="0"
+            data-chibi-action="study"
+          >
 
             <div class="chibi-mini chibi-angel pose-study">
 
+
               <div class="mini-halo"></div>
+
 
               <div class="mini-hood">
 
                 <div class="mini-face">
+
                   <i></i>
                   <i></i>
+
                 </div>
 
               </div>
 
+
               <div class="mini-body"></div>
+
 
               <div class="mini-book">
                 SY0
@@ -1439,33 +1803,11 @@
 
 
 
-    <!-- =====================================================
-         WORKING METHOD
-    ====================================================== -->
+    <!-- ======================================================
+         WORKFLOW
+    ======================================================= -->
 
     <section class="section workflow section-shell">
-
-
-      <div class="workflow-chibi">
-
-        <div class="chibi-mini chibi-angel pose-run">
-
-          <div class="mini-halo"></div>
-
-          <div class="mini-hood">
-
-            <div class="mini-face">
-              <i></i>
-              <i></i>
-            </div>
-
-          </div>
-
-          <div class="mini-body"></div>
-
-        </div>
-
-      </div>
 
 
       <div class="section-label">
@@ -1473,44 +1815,131 @@
       </div>
 
 
-      <div class="workflow-line reveal">
 
-        <span>Learn</span>
+      <div class="workflow-wrap">
 
-        <i>→</i>
 
-        <span>Research</span>
+        <div class="workflow-line reveal">
 
-        <i>→</i>
 
-        <span>Build</span>
+          <span>
+            Learn
+          </span>
 
-        <i>→</i>
+          <i>
+            →
+          </i>
 
-        <span>Test</span>
 
-        <i>→</i>
+          <span>
+            Research
+          </span>
 
-        <span>Document</span>
+          <i>
+            →
+          </i>
 
-        <i>→</i>
 
-        <span>Fix</span>
+          <span>
+            Build
+          </span>
 
-        <i>→</i>
+          <i>
+            →
+          </i>
 
-        <span>Retest</span>
+
+          <span>
+            Test
+          </span>
+
+          <i>
+            →
+          </i>
+
+
+          <span>
+            Document
+          </span>
+
+          <i>
+            →
+          </i>
+
+
+          <span>
+            Fix
+          </span>
+
+          <i>
+            →
+          </i>
+
+
+          <span>
+            Retest
+          </span>
+
+        </div>
+
+
+
+        <div
+          class="workflow-chibi interactive-chibi"
+          tabindex="0"
+          data-chibi-action="run"
+        >
+
+          <div class="chibi-mini chibi-angel pose-run">
+
+
+            <div class="mini-halo"></div>
+
+
+            <div class="mini-hood">
+
+              <div class="mini-face">
+
+                <i></i>
+                <i></i>
+
+              </div>
+
+            </div>
+
+
+            <div class="mini-body"></div>
+
+          </div>
+
+        </div>
 
       </div>
+
+
+      <a
+        class="section-arrow"
+        href="#roles"
+      >
+
+        <span>
+          Focus areas
+        </span>
+
+        <i>
+          ↓
+        </i>
+
+      </a>
 
     </section>
 
 
 
 
-    <!-- =====================================================
+    <!-- ======================================================
          FOCUS AREAS
-    ====================================================== -->
+    ======================================================= -->
 
     <section
       class="section"
@@ -1529,14 +1958,15 @@
 
         <div>
 
+
           <p class="mini-heading">
-            Where I'm heading
+            Direction
           </p>
 
 
           <h2>
 
-            Built to show
+            Showing
 
             <span>
               real progress.
@@ -1547,11 +1977,9 @@
 
           <p>
 
-            This is not a static job application page.
-
-            It is a living showcase of the security skills,
-            projects, labs and research I am building
-            over time.
+            This portfolio is a living record of
+            cybersecurity skills, labs, projects,
+            research and practical learning.
 
           </p>
 
@@ -1561,21 +1989,46 @@
 
         <div class="role-list">
 
-          <span>Penetration Testing</span>
 
-          <span>Cybersecurity Analysis</span>
+          <span>
+            Penetration Testing
+            <i>↗</i>
+          </span>
 
-          <span>VAPT</span>
+          <span>
+            Cybersecurity Analysis
+            <i>↗</i>
+          </span>
 
-          <span>Web Security</span>
+          <span>
+            VAPT
+            <i>↗</i>
+          </span>
 
-          <span>Network Security</span>
+          <span>
+            Web Security
+            <i>↗</i>
+          </span>
 
-          <span>Security Research</span>
+          <span>
+            Network Security
+            <i>↗</i>
+          </span>
 
-          <span>Python Automation</span>
+          <span>
+            Security Research
+            <i>↗</i>
+          </span>
 
-          <span>Technical Reporting</span>
+          <span>
+            Python Automation
+            <i>↗</i>
+          </span>
+
+          <span>
+            Technical Reporting
+            <i>↗</i>
+          </span>
 
         </div>
 
@@ -1583,59 +2036,82 @@
 
 
 
-      <!-- CTA PANEL -->
+
+      <!-- ==================================================
+           CTA
+      =================================================== -->
 
       <div class="contact-panel reveal">
 
 
-        <div class="contact-chibi">
+        <div class="contact-mascots">
 
 
-          <div class="chibi-duo">
+          <!-- ANGEL -->
+
+          <div
+            class="chibi-mini chibi-angel interactive-chibi"
+            tabindex="0"
+            data-chibi-action="wave"
+          >
+
+            <div class="mini-halo"></div>
 
 
-            <!-- angel -->
+            <div class="mini-hood">
 
-            <div class="chibi-mini chibi-angel pose-wave">
+              <div class="mini-face">
 
-              <div class="mini-halo"></div>
-
-              <div class="mini-hood">
-
-                <div class="mini-face">
-                  <i></i>
-                  <i></i>
-                </div>
+                <i></i>
+                <i></i>
 
               </div>
-
-              <div class="mini-body"></div>
 
             </div>
 
 
+            <div class="mini-body"></div>
 
-            <!-- devil -->
+          </div>
 
-            <div class="chibi-mini chibi-devil pose-wave">
 
-              <div class="mini-horns">
-                <i></i>
-                <i></i>
-              </div>
 
-              <div class="mini-hood">
+          <span class="mascot-arrow">
+            ↔
+          </span>
 
-                <div class="mini-face evil">
-                  <i></i>
-                  <i></i>
-                </div>
 
-              </div>
 
-              <div class="mini-body"></div>
+          <!-- DEVIL -->
+
+          <div
+            class="chibi-mini chibi-devil interactive-chibi"
+            tabindex="0"
+            data-chibi-action="wave"
+          >
+
+
+            <div class="mini-horns">
+
+              <i></i>
+              <i></i>
 
             </div>
+
+
+            <div class="mini-hood">
+
+              <div class="mini-face evil">
+
+                <i></i>
+                <i></i>
+
+              </div>
+
+            </div>
+
+
+            <div class="mini-body"></div>
 
           </div>
 
@@ -1645,6 +2121,7 @@
 
         <div class="contact-copy">
 
+
           <p class="eyebrow">
             Explore more
           </p>
@@ -1652,11 +2129,29 @@
 
           <h3>
 
-            See the labs,
-            repositories and security work
-            behind the portfolio.
+            See the work behind
+            the portfolio.
 
           </h3>
+
+
+          <p class="contact-description">
+
+            Labs
+
+            <span>→</span>
+
+            Code
+
+            <span>→</span>
+
+            Research
+
+            <span>→</span>
+
+            Documentation
+
+          </p>
 
         </div>
 
@@ -1664,13 +2159,20 @@
 
         <div class="actions">
 
+
           <a
             class="btn primary"
             href="https://github.com/rahulcyberepo"
             target="_blank"
             rel="noreferrer"
           >
+
             GitHub
+
+            <span>
+              ↗
+            </span>
+
           </a>
 
 
@@ -1680,7 +2182,13 @@
             target="_blank"
             rel="noreferrer"
           >
+
             TryHackMe
+
+            <span>
+              ↗
+            </span>
+
           </a>
 
 
@@ -1690,7 +2198,13 @@
             target="_blank"
             rel="noreferrer"
           >
+
             LinkedIn
+
+            <span>
+              ↗
+            </span>
+
           </a>
 
         </div>
@@ -1702,14 +2216,30 @@
 
 
 
-    <!-- =====================================================
-         ANGEL / DEVIL BREAK
-    ====================================================== -->
+    <!-- ======================================================
+         FINAL ANGEL / DEVIL
+    ======================================================= -->
 
     <section
       class="cloud-break"
-      aria-label="Cybersecurity personality illustration"
+      aria-label="Ethical cybersecurity mascot illustration"
     >
+
+
+      <div class="final-heading">
+
+        <p class="eyebrow">
+          Two perspectives
+        </p>
+
+
+        <h2>
+          Understand attack.
+          Defend better.
+        </h2>
+
+      </div>
+
 
 
       <div class="final-scene">
@@ -1719,35 +2249,36 @@
 
         <div class="final-character angel-side">
 
-          <div class="chibi chibi-angel pose-float">
 
-            <div class="chibi-halo"></div>
+          <div
+            class="chibi-mini chibi-angel interactive-chibi"
+            tabindex="0"
+            data-chibi-action="angel"
+          >
 
-            <div class="chibi-wing wing-left"></div>
-            <div class="chibi-wing wing-right"></div>
+
+            <div class="mini-halo"></div>
 
 
-            <div class="chibi-hood">
+            <div class="mini-hood">
 
-              <div class="chibi-face">
+              <div class="mini-face">
 
-                <span class="chibi-eye eye-one"></span>
-                <span class="chibi-eye eye-two"></span>
-
-                <span class="chibi-mouth"></span>
+                <i></i>
+                <i></i>
 
               </div>
 
             </div>
 
 
-            <div class="chibi-body"></div>
+            <div class="mini-body"></div>
 
           </div>
 
 
           <span>
-            defend
+            Defend
           </span>
 
         </div>
@@ -1756,13 +2287,20 @@
 
         <div class="versus-symbol">
 
-          <span>ethical</span>
+
+          <span>
+            ethical
+          </span>
+
 
           <strong>
             ↔
           </strong>
 
-          <span>offensive</span>
+
+          <span>
+            offensive
+          </span>
 
         </div>
 
@@ -1772,44 +2310,41 @@
 
         <div class="final-character devil-side">
 
-          <div class="chibi chibi-devil pose-float">
+
+          <div
+            class="chibi-mini chibi-devil interactive-chibi"
+            tabindex="0"
+            data-chibi-action="devil"
+          >
 
 
-            <div class="chibi-horns">
-              <span></span>
-              <span></span>
+            <div class="mini-horns">
+
+              <i></i>
+              <i></i>
+
             </div>
 
 
-            <div class="chibi-hood">
+            <div class="mini-hood">
 
-              <div class="chibi-face devil-face">
+              <div class="mini-face evil">
 
-                <span class="chibi-eye eye-one"></span>
-                <span class="chibi-eye eye-two"></span>
-
-                <span class="chibi-mouth"></span>
+                <i></i>
+                <i></i>
 
               </div>
 
             </div>
 
 
-            <div class="chibi-body"></div>
-
-
-            <div class="mini-scythe">
-
-              <span class="scythe-stick"></span>
-              <span class="scythe-blade"></span>
-
-            </div>
+            <div class="mini-body"></div>
 
           </div>
 
 
           <span>
-            test
+            Test
           </span>
 
         </div>
@@ -1820,45 +2355,90 @@
 
       <p class="final-caption">
 
-        understand both sides
+        Learn
 
-        <span>•</span>
+        <span>
+          →
+        </span>
 
-        stay ethical
+        Test safely
+
+        <span>
+          →
+        </span>
+
+        Fix
+
+        <span>
+          →
+        </span>
+
+        Retest
 
       </p>
 
+
+
+      <a
+        class="section-arrow final-arrow"
+        href="#home"
+      >
+
+        <span>
+          Back to top
+        </span>
+
+        <i>
+          ↑
+        </i>
+
+      </a>
+
     </section>
+
 
   </main>
 
 
 
-
-  <!-- =====================================================
+  <!-- ======================================================
        FOOTER
-  ====================================================== -->
+  ======================================================= -->
 
   <footer>
+
 
     <div class="footer-copy">
 
       <p>
+
         ©
+
         <span id="year"></span>
+
         Rahul Kumar Gupta
+
       </p>
 
 
       <span>
-        Learn • Break safely • Fix better
+        Learn → Test → Document → Improve
       </span>
 
     </div>
 
 
-    <a href="#home">
-      Back to top ↑
+    <a
+      href="#home"
+      class="footer-top"
+    >
+
+      Top
+
+      <span>
+        ↑
+      </span>
+
     </a>
 
   </footer>
@@ -1866,10 +2446,9 @@
 
 
 
-  <!-- =====================================================
+  <!-- ======================================================
        PROJECT MODAL
-       Existing script.js compatible
-  ====================================================== -->
+  ======================================================= -->
 
   <dialog
     class="project-modal"
@@ -1880,10 +2459,12 @@
     <button
       class="close-modal"
       id="modalClose"
-      aria-label="Close"
+      type="button"
+      aria-label="Close project details"
     >
       ×
     </button>
+
 
 
     <p class="eyebrow">
@@ -1949,13 +2530,10 @@
 
     </div>
 
+
   </dialog>
 
 
-
-  <!-- =====================================================
-       SCRIPT
-  ====================================================== -->
 
   <script src="script.js"></script>
 
