@@ -1,23 +1,9 @@
 /* =========================================================
    RAHUL CYBERSECURITY PORTFOLIO
-   MOBILE-FIRST SCRIPT.JS
+   script.js
 ========================================================= */
 
 "use strict";
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-const prefersReducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
-
-const finePointer = window.matchMedia(
-  "(hover: hover) and (pointer: fine)"
-).matches;
-
 
 
 /* =========================================================
@@ -27,32 +13,15 @@ const finePointer = window.matchMedia(
 const menuButton = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");
 
-
-function closeNavigation() {
-
-  if (!nav || !menuButton) return;
-
-  nav.classList.remove("open");
-
-  menuButton.setAttribute(
-    "aria-expanded",
-    "false"
-  );
-
-}
-
-
 if (menuButton && nav) {
 
-  menuButton.addEventListener("click", event => {
+  menuButton.addEventListener("click", () => {
 
-    event.stopPropagation();
-
-    const open = nav.classList.toggle("open");
+    const isOpen = nav.classList.toggle("open");
 
     menuButton.setAttribute(
       "aria-expanded",
-      String(open)
+      String(isOpen)
     );
 
   });
@@ -60,23 +29,37 @@ if (menuButton && nav) {
 
   nav.querySelectorAll("a").forEach(link => {
 
-    link.addEventListener(
-      "click",
-      closeNavigation
-    );
+    link.addEventListener("click", () => {
+
+      nav.classList.remove("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    });
 
   });
 
 
   document.addEventListener("click", event => {
 
+    const clickedInsideNav = nav.contains(event.target);
+    const clickedMenuButton = menuButton.contains(event.target);
+
     if (
       nav.classList.contains("open") &&
-      !nav.contains(event.target) &&
-      !menuButton.contains(event.target)
+      !clickedInsideNav &&
+      !clickedMenuButton
     ) {
 
-      closeNavigation();
+      nav.classList.remove("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
     }
 
@@ -90,12 +73,11 @@ if (menuButton && nav) {
    CURRENT YEAR
 ========================================================= */
 
-const year =
-  document.getElementById("year");
+const yearElement = document.getElementById("year");
 
-if (year) {
+if (yearElement) {
 
-  year.textContent =
+  yearElement.textContent =
     new Date().getFullYear();
 
 }
@@ -103,45 +85,25 @@ if (year) {
 
 
 /* =========================================================
-   HEADER SCROLL STATE
+   REDUCED MOTION
 ========================================================= */
 
-const header =
-  document.querySelector(".site-header");
-
-
-function updateHeader() {
-
-  if (!header) return;
-
-  header.classList.toggle(
-    "scrolled",
-    window.scrollY > 25
-  );
-
-}
-
-
-updateHeader();
-
-
-window.addEventListener(
-  "scroll",
-  updateHeader,
-  { passive: true }
-);
+const reducedMotion =
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
 
 
 /* =========================================================
-   REVEAL ON SCROLL
+   SCROLL REVEAL
 ========================================================= */
 
 const revealElements =
   document.querySelectorAll(".reveal");
 
 
-if (prefersReducedMotion) {
+if (reducedMotion) {
 
   revealElements.forEach(element => {
 
@@ -158,8 +120,7 @@ if (prefersReducedMotion) {
 
         entries.forEach(entry => {
 
-          if (!entry.isIntersecting)
-            return;
+          if (!entry.isIntersecting) return;
 
 
           entry.target.classList.add(
@@ -176,10 +137,8 @@ if (prefersReducedMotion) {
       },
 
       {
-        threshold: 0.08,
-
-        rootMargin:
-          "0px 0px -30px 0px"
+        threshold: 0.12,
+        rootMargin: "0px 0px -35px 0px"
       }
 
     );
@@ -196,7 +155,44 @@ if (prefersReducedMotion) {
 
 
 /* =========================================================
-   ACTIVE NAVIGATION
+   HEADER SCROLL STATE
+========================================================= */
+
+const header =
+  document.querySelector(".site-header");
+
+
+const updateHeader = () => {
+
+  if (!header) return;
+
+
+  if (window.scrollY > 40) {
+
+    header.classList.add("scrolled");
+
+  } else {
+
+    header.classList.remove("scrolled");
+
+  }
+
+};
+
+
+updateHeader();
+
+
+window.addEventListener(
+  "scroll",
+  updateHeader,
+  { passive: true }
+);
+
+
+
+/* =========================================================
+   ACTIVE NAVIGATION LINK
 ========================================================= */
 
 const sections =
@@ -210,12 +206,9 @@ const navLinks =
   );
 
 
-if (
-  sections.length &&
-  navLinks.length
-) {
+if (sections.length && navLinks.length) {
 
-  const activeObserver =
+  const sectionObserver =
     new IntersectionObserver(
 
       entries => {
@@ -226,21 +219,27 @@ if (
             return;
 
 
-          const currentId =
+          const id =
             entry.target.id;
 
 
           navLinks.forEach(link => {
 
-            const isActive =
-              link.getAttribute("href") ===
-              `#${currentId}`;
-
-
-            link.classList.toggle(
-              "active",
-              isActive
+            link.classList.remove(
+              "active"
             );
+
+
+            if (
+              link.getAttribute("href") ===
+              `#${id}`
+            ) {
+
+              link.classList.add(
+                "active"
+              );
+
+            }
 
           });
 
@@ -250,7 +249,7 @@ if (
 
       {
         rootMargin:
-          "-32% 0px -58% 0px",
+          "-35% 0px -55% 0px",
 
         threshold: 0
       }
@@ -260,7 +259,7 @@ if (
 
   sections.forEach(section => {
 
-    activeObserver.observe(section);
+    sectionObserver.observe(section);
 
   });
 
@@ -269,7 +268,7 @@ if (
 
 
 /* =========================================================
-   GREEN MATRIX
+   GREEN MATRIX HERO ANIMATION
 ========================================================= */
 
 const canvas =
@@ -278,37 +277,37 @@ const canvas =
   );
 
 
-if (
-  canvas &&
-  !prefersReducedMotion
-) {
+if (canvas && !reducedMotion) {
 
   const ctx =
     canvas.getContext("2d");
 
 
-  const characters =
+  const matrixCharacters =
+
     "01ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
     "$#@%&+-<>[]{}" +
     "アイウエオカキクケコ" +
-    "サシスセソ";
+    "サシスセソタチツテト";
 
 
-  let fontSize = 14;
+  let fontSize = 15;
 
   let drops = [];
 
-  let width = 0;
-
-  let height = 0;
-
   let animationId = null;
 
-  let lastFrame = 0;
+  let canvasWidth = 0;
+
+  let canvasHeight = 0;
 
 
 
-  function resizeMatrix() {
+  /* -------------------------
+     RESIZE MATRIX
+  ------------------------- */
+
+  const resizeMatrix = () => {
 
     const rect =
       canvas.getBoundingClientRect();
@@ -321,39 +320,20 @@ if (
       );
 
 
-    width =
-      rect.width;
+    canvasWidth = rect.width;
 
-
-    height =
-      rect.height;
-
-
-    /*
-      Reduce Matrix density on phones.
-    */
-
-    fontSize =
-      window.innerWidth < 600
-        ? 17
-        : 14;
+    canvasHeight = rect.height;
 
 
     canvas.width =
-      Math.max(
-        1,
-        Math.floor(
-          width * dpr
-        )
+      Math.floor(
+        rect.width * dpr
       );
 
 
     canvas.height =
-      Math.max(
-        1,
-        Math.floor(
-          height * dpr
-        )
+      Math.floor(
+        rect.height * dpr
       );
 
 
@@ -369,64 +349,58 @@ if (
 
     const columns =
       Math.ceil(
-        width / fontSize
+        canvasWidth / fontSize
       );
 
 
     drops =
       Array.from(
-        { length: columns },
+
+        {
+          length: columns
+        },
 
         () =>
-          Math.random() * -60
+          Math.random() * -80
+
       );
 
-  }
+  };
 
 
 
-  function drawMatrix(timestamp = 0) {
+  /* -------------------------
+     MATRIX DRAW
+  ------------------------- */
+
+  const drawMatrix = () => {
 
     /*
-      Slight FPS limitation improves mobile
-      performance and battery usage.
+      White transparent fade instead
+      of black.
+
+      This produces green Matrix rain
+      suitable for the white theme.
     */
 
-    if (
-      timestamp - lastFrame < 34
-    ) {
-
-      animationId =
-        requestAnimationFrame(
-          drawMatrix
-        );
-
-      return;
-
-    }
-
-
-    lastFrame = timestamp;
-
-
     ctx.fillStyle =
-      "rgba(248, 253, 249, 0.18)";
+      "rgba(248, 253, 249, 0.13)";
 
 
     ctx.fillRect(
       0,
       0,
-      width,
-      height
+      canvasWidth,
+      canvasHeight
     );
 
 
     ctx.font =
-      `${fontSize}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
+      `${fontSize}px ui-monospace, ` +
+      `SFMono-Regular, Menlo, Consolas, monospace`;
 
 
-    ctx.textBaseline =
-      "top";
+    ctx.textBaseline = "top";
 
 
     for (
@@ -436,10 +410,10 @@ if (
     ) {
 
       const character =
-        characters[
+        matrixCharacters[
           Math.floor(
             Math.random() *
-            characters.length
+            matrixCharacters.length
           )
         ];
 
@@ -452,24 +426,30 @@ if (
         drops[i] * fontSize;
 
 
+
+      /*
+        Mostly soft green characters,
+        with occasional darker characters.
+      */
+
       const bright =
-        Math.random() > 0.93;
+        Math.random() > 0.92;
 
 
       if (bright) {
 
         ctx.fillStyle =
-          "rgba(0, 170, 82, 0.62)";
+          "rgba(0, 185, 82, 0.78)";
 
       } else {
 
         const opacity =
-          0.10 +
-          Math.random() * 0.24;
+          0.16 +
+          Math.random() * 0.30;
 
 
         ctx.fillStyle =
-          `rgba(0, 145, 68, ${opacity})`;
+          `rgba(0, 150, 70, ${opacity})`;
 
       }
 
@@ -481,21 +461,29 @@ if (
       );
 
 
+
+      /*
+        Restart individual stream
+      */
+
       if (
-        y > height &&
-        Math.random() > 0.977
+        y > canvasHeight &&
+        Math.random() > 0.976
       ) {
 
         drops[i] =
-          Math.random() * -25;
+          Math.random() * -30;
 
       }
 
 
+      /*
+        Rain speed
+      */
+
       drops[i] +=
-        window.innerWidth < 600
-          ? 0.34
-          : 0.45;
+        0.42 +
+        Math.random() * 0.16;
 
     }
 
@@ -505,7 +493,7 @@ if (
         drawMatrix
       );
 
-  }
+  };
 
 
 
@@ -515,7 +503,11 @@ if (
 
 
 
-  let matrixResizeTimer;
+  /* -------------------------
+     RESPONSIVE MATRIX
+  ------------------------- */
+
+  let resizeTimer;
 
 
   window.addEventListener(
@@ -524,14 +516,14 @@ if (
     () => {
 
       clearTimeout(
-        matrixResizeTimer
+        resizeTimer
       );
 
 
-      matrixResizeTimer =
+      resizeTimer =
         setTimeout(
           resizeMatrix,
-          150
+          120
         );
 
     },
@@ -544,30 +536,36 @@ if (
 
 
 
+  /* -------------------------
+     STOP MATRIX WHEN TAB
+     IS NOT ACTIVE
+  ------------------------- */
+
   document.addEventListener(
     "visibilitychange",
 
     () => {
 
-      if (document.hidden) {
+      if (
+        document.hidden &&
+        animationId
+      ) {
 
-        if (animationId) {
+        cancelAnimationFrame(
+          animationId
+        );
 
-          cancelAnimationFrame(
-            animationId
-          );
 
-          animationId = null;
+        animationId = null;
 
-        }
+      }
 
-      } else {
+      else if (
+        !document.hidden &&
+        !animationId
+      ) {
 
-        if (!animationId) {
-
-          drawMatrix();
-
-        }
+        drawMatrix();
 
       }
 
@@ -592,19 +590,19 @@ const projects = {
       "Cybersecurity Home Lab + Network Discovery",
 
     summary:
-      "An isolated cybersecurity lab designed to understand how systems communicate and how discovery and enumeration work in practice.",
+      "An isolated cybersecurity lab designed to understand how systems communicate and how discovery and enumeration techniques work in practice.",
 
     objective:
       "Build an isolated Kali Linux, Ubuntu and Windows environment. Discover hosts, observe ARP communication, identify open ports, enumerate services, capture traffic and create a basic network map.",
 
     evidence:
-      "Network architecture diagram, terminal screenshots, Nmap results, Wireshark captures, PCAP files, technical notes and a GitHub README.",
+      "Network architecture diagram, terminal screenshots, Nmap results, Wireshark captures, PCAP files, technical notes, GitHub README and a short research write-up.",
 
     skills:
-      "Virtual networking, IP addressing, MAC addressing, ARP, TCP/IP, Nmap, Wireshark and documentation.",
+      "Virtual networking, IP addressing, MAC addressing, ARP, TCP/IP, ports, services, Nmap, Wireshark and technical documentation.",
 
     relevance:
-      "Builds the networking and enumeration foundation needed for penetration testing, vulnerability assessment and troubleshooting."
+      "Creates the networking and enumeration foundation required for penetration testing, vulnerability assessment and technical troubleshooting."
 
   },
 
@@ -615,19 +613,19 @@ const projects = {
       "Linux Security + Hardening",
 
     summary:
-      "Assess a Linux system, identify weak configurations and demonstrate measurable improvements after hardening.",
+      "A practical Linux security assessment focused on identifying weak configurations, improving the machine and verifying that the changes actually work.",
 
     objective:
-      "Review users, groups, permissions, processes, exposed services, SSH and firewall configuration, then harden the system and retest it.",
+      "Review users, groups, file permissions, running processes, services, SSH configuration and firewall rules. Identify weaknesses, harden the system and perform a structured retest.",
 
     evidence:
-      "Before and after checklist, terminal evidence, configuration changes, screenshots and a short hardening report.",
+      "Before-and-after security checklist, terminal evidence, screenshots, configuration changes, remediation notes and a short Linux hardening report.",
 
     skills:
-      "Linux permissions, SSH, services, firewall configuration, least privilege and system hardening.",
+      "Linux administration, permissions, users and groups, SSH security, service management, firewall configuration, least privilege and system hardening.",
 
     relevance:
-      "Useful for penetration testing, infrastructure assessments and remediation verification."
+      "Useful for penetration testing, infrastructure reviews, Linux server assessments and remediation verification."
 
   },
 
@@ -638,19 +636,19 @@ const projects = {
       "Network Traffic Investigation",
 
     summary:
-      "Analyze packet captures to understand communication between systems and reconstruct network activity.",
+      "A packet analysis project focused on understanding communication between systems and reconstructing network activity from captured traffic.",
 
     objective:
-      "Identify communicating hosts, protocols, DNS requests, TCP sessions and HTTP traffic and explain the sequence of events.",
+      "Inspect packet captures, identify communicating hosts, analyze protocols, reconstruct DNS and TCP activity and determine what happened during the captured session.",
 
     evidence:
-      "Annotated PCAP, Wireshark screenshots, filters, timeline and a short investigation report.",
+      "Annotated PCAP files, Wireshark screenshots, filters used during analysis, packet-flow diagram, timeline and a short investigation report.",
 
     skills:
-      "Wireshark, packet analysis, DNS, TCP, HTTP and network investigation.",
+      "Wireshark, packet analysis, DNS, TCP, HTTP, network troubleshooting, traffic filtering and timeline reconstruction.",
 
     relevance:
-      "Useful for penetration testing, troubleshooting, incident investigation and network analysis."
+      "Useful across penetration testing, network troubleshooting, incident investigation and security analysis."
 
   },
 
@@ -661,19 +659,19 @@ const projects = {
       "Vulnerability Assessment + Manual Validation",
 
     summary:
-      "Use vulnerability scanners as starting points and manually verify whether reported issues are real.",
+      "A vulnerability assessment project designed to demonstrate that scanner results must be investigated and manually validated before being reported.",
 
     objective:
-      "Run vulnerability discovery tools and classify findings as confirmed vulnerabilities, false positives, misconfigurations or informational issues.",
+      "Run vulnerability discovery tools, review their findings and manually determine whether each issue is a confirmed vulnerability, false positive, misconfiguration or informational finding.",
 
     evidence:
-      "Scanner output, screenshots, manual validation notes, findings, executive summary and retest documentation.",
+      "Scanner output, screenshots, validation methodology, proof of findings, false-positive notes, executive summary, technical report and retest documentation.",
 
     skills:
-      "Nmap, Nessus, Nikto, vulnerability validation, risk analysis, evidence collection and reporting.",
+      "Vulnerability assessment, Nmap, Nessus, Nikto, manual validation, evidence collection, risk analysis, CVSS concepts and technical reporting.",
 
     relevance:
-      "Reflects real VAPT work where automated scanner results must be manually verified before reporting."
+      "Directly reflects real VAPT work where security professionals must validate automated findings before reporting them to clients."
 
   },
 
@@ -684,19 +682,19 @@ const projects = {
       "Web Application VAPT",
 
     summary:
-      "Perform a controlled assessment against an intentionally vulnerable web application.",
+      "A controlled web application security assessment performed against an intentionally vulnerable application.",
 
     objective:
-      "Test authentication, authorization, access control, sessions, input handling and selected business logic weaknesses.",
+      "Test authentication, authorization, access control, sessions, input handling and selected business-logic weaknesses while documenting root cause, impact and remediation.",
 
     evidence:
-      "Sanitized HTTP requests and responses, Burp captures, screenshots, findings, remediation recommendations and retest results.",
+      "Sanitized HTTP requests and responses, Burp Suite captures, screenshots, vulnerability findings, remediation recommendations and retest results.",
 
     skills:
-      "HTTP, Burp Suite, authentication, authorization, access control, OWASP concepts and manual validation.",
+      "HTTP, Burp Suite, authentication testing, authorization testing, access control, OWASP concepts, manual validation and security reporting.",
 
     relevance:
-      "Direct preparation for junior VAPT, penetration testing and application security roles."
+      "Direct preparation for junior VAPT, penetration testing, web security and application security responsibilities."
 
   },
 
@@ -707,19 +705,19 @@ const projects = {
       "VAPT Workflow Automation",
 
     summary:
-      "Build a Python utility that removes repetitive work from a practical security assessment workflow.",
+      "A Python automation project built around a real security assessment workflow instead of creating another generic scanner.",
 
     objective:
-      "Automate tasks such as parsing Nmap XML, organizing evidence, tracking findings or preparing structured assessment data.",
+      "Automate a repetitive penetration-testing task such as parsing Nmap XML, organizing evidence, tracking findings or generating structured assessment data.",
 
     evidence:
-      "GitHub repository, source code, README, sample input and output, screenshots, test cases and limitations.",
+      "GitHub repository, source code, README documentation, sample inputs, sample outputs, screenshots, test cases and documented limitations.",
 
     skills:
-      "Python, XML, JSON, file handling, error handling, automation and Git.",
+      "Python, XML, JSON, CSV, regex, file handling, error handling, automation logic, Git and technical documentation.",
 
     relevance:
-      "Demonstrates how programming can improve practical cybersecurity workflows."
+      "Demonstrates the ability to use programming to improve real cybersecurity workflows and reduce repetitive manual work."
 
   }
 
@@ -737,7 +735,7 @@ const modal =
   );
 
 
-const closeModalButton =
+const closeButton =
   document.getElementById(
     "modalClose"
   );
@@ -779,26 +777,9 @@ const modalFields = {
 
 
 
-function closeProjectModal() {
-
-  if (!modal)
-    return;
-
-
-  if (modal.open) {
-
-    modal.close();
-
-  }
-
-
-  document.body.classList.remove(
-    "modal-open"
-  );
-
-}
-
-
+/* -------------------------
+   OPEN PROJECT
+------------------------- */
 
 document
   .querySelectorAll(
@@ -815,35 +796,36 @@ document
           return;
 
 
-        const key =
+        const projectKey =
           button.dataset.project;
 
 
-        const project =
-          projects[key];
+        const data =
+          projects[projectKey];
 
 
-        if (!project)
+        if (!data)
           return;
 
 
+
         Object
-          .entries(modalFields)
-          .forEach(
-            ([field, element]) => {
+          .keys(modalFields)
+          .forEach(key => {
 
-              if (
-                element &&
-                project[field]
-              ) {
+            if (
+              modalFields[key] &&
+              data[key]
+            ) {
 
-                element.textContent =
-                  project[field];
-
-              }
+              modalFields[key]
+                .textContent =
+                data[key];
 
             }
-          );
+
+          });
+
 
 
         modal.showModal();
@@ -861,19 +843,44 @@ document
 
 
 
+/* -------------------------
+   CLOSE MODAL
+------------------------- */
+
+const closeModal = () => {
+
+  if (!modal)
+    return;
+
+
+  modal.close();
+
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+
+};
+
+
+
 if (
-  closeModalButton &&
+  closeButton &&
   modal
 ) {
 
-  closeModalButton.addEventListener(
+  closeButton.addEventListener(
     "click",
-    closeProjectModal
+    closeModal
   );
 
 }
 
 
+
+/* -------------------------
+   CLICK OUTSIDE MODAL
+------------------------- */
 
 if (modal) {
 
@@ -886,7 +893,7 @@ if (modal) {
         modal.getBoundingClientRect();
 
 
-      const outside =
+      const clickedOutside =
 
         event.clientX <
           rect.left ||
@@ -901,15 +908,16 @@ if (modal) {
           rect.bottom;
 
 
-      if (outside) {
+      if (clickedOutside) {
 
-        closeProjectModal();
+        closeModal();
 
       }
 
     }
 
   );
+
 
 
   modal.addEventListener(
@@ -930,383 +938,7 @@ if (modal) {
 
 
 /* =========================================================
-   CHIBI ANIMATION SYSTEM
-========================================================= */
-
-const interactiveChibis =
-  document.querySelectorAll(
-    ".interactive-chibi"
-  );
-
-
-const chibiTimeouts =
-  new WeakMap();
-
-
-
-function restartChibiAnimation(
-  element
-) {
-
-  if (
-    !element ||
-    prefersReducedMotion
-  ) {
-
-    return;
-
-  }
-
-
-  const oldTimeout =
-    chibiTimeouts.get(element);
-
-
-  if (oldTimeout) {
-
-    clearTimeout(oldTimeout);
-
-  }
-
-
-  element.classList.remove(
-    "chibi-playing"
-  );
-
-
-  /*
-    Force reflow so tapping the same mascot
-    repeatedly restarts its animation.
-  */
-
-  void element.offsetWidth;
-
-
-  element.classList.add(
-    "chibi-playing"
-  );
-
-
-  const timeout =
-    setTimeout(
-      () => {
-
-        element.classList.remove(
-          "chibi-playing"
-        );
-
-      },
-
-      1100
-    );
-
-
-  chibiTimeouts.set(
-    element,
-    timeout
-  );
-
-}
-
-
-
-/* =========================================================
-   DESKTOP: HOVER + FOCUS
-========================================================= */
-
-interactiveChibis.forEach(chibi => {
-
-
-  if (finePointer) {
-
-    chibi.addEventListener(
-      "pointerenter",
-
-      () => {
-
-        chibi.classList.add(
-          "chibi-hover"
-        );
-
-
-        restartChibiAnimation(
-          chibi
-        );
-
-      }
-
-    );
-
-
-    chibi.addEventListener(
-      "pointerleave",
-
-      () => {
-
-        chibi.classList.remove(
-          "chibi-hover"
-        );
-
-      }
-
-    );
-
-  }
-
-
-
-  chibi.addEventListener(
-    "focus",
-
-    () => {
-
-      chibi.classList.add(
-        "chibi-hover"
-      );
-
-
-      restartChibiAnimation(
-        chibi
-      );
-
-    }
-
-  );
-
-
-  chibi.addEventListener(
-    "blur",
-
-    () => {
-
-      chibi.classList.remove(
-        "chibi-hover"
-      );
-
-    }
-
-  );
-
-
-
-  /* =======================================================
-     MOBILE: TAP
-  ======================================================= */
-
-  chibi.addEventListener(
-    "click",
-
-    event => {
-
-      /*
-        Chibis don't navigate anywhere,
-        so their tap can purely animate.
-      */
-
-      event.stopPropagation();
-
-
-      restartChibiAnimation(
-        chibi
-      );
-
-
-      if (!finePointer) {
-
-        chibi.classList.add(
-          "chibi-touch"
-        );
-
-
-        setTimeout(
-          () => {
-
-            chibi.classList.remove(
-              "chibi-touch"
-            );
-
-          },
-
-          900
-        );
-
-      }
-
-    }
-
-  );
-
-
-
-  /* =======================================================
-     KEYBOARD
-  ======================================================= */
-
-  chibi.addEventListener(
-    "keydown",
-
-    event => {
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-
-
-        restartChibiAnimation(
-          chibi
-        );
-
-      }
-
-    }
-
-  );
-
-});
-
-
-
-/* =========================================================
-   ACTION-SPECIFIC CHIBI ANIMATION
-========================================================= */
-
-interactiveChibis.forEach(chibi => {
-
-  const action =
-    chibi.dataset.chibiAction;
-
-
-  if (!action)
-    return;
-
-
-  chibi.classList.add(
-    `chibi-action-${action}`
-  );
-
-});
-
-
-
-/* =========================================================
-   HERO CHIBI FOLLOW EFFECT
-   DESKTOP ONLY
-========================================================= */
-
-const heroVisual =
-  document.querySelector(
-    ".hero-visual"
-  );
-
-
-const heroChibi =
-  document.querySelector(
-    ".hero-character-zone .chibi"
-  );
-
-
-if (
-  heroVisual &&
-  heroChibi &&
-  finePointer &&
-  !prefersReducedMotion
-) {
-
-  heroVisual.addEventListener(
-    "pointermove",
-
-    event => {
-
-      /*
-        Don't move the mascot while its
-        dedicated animation is playing.
-      */
-
-      if (
-        heroChibi.classList.contains(
-          "chibi-playing"
-        )
-      ) {
-
-        return;
-
-      }
-
-
-      const rect =
-        heroVisual
-          .getBoundingClientRect();
-
-
-      const x =
-        (
-          event.clientX -
-          rect.left
-        ) / rect.width - .5;
-
-
-      const y =
-        (
-          event.clientY -
-          rect.top
-        ) / rect.height - .5;
-
-
-      heroChibi.style.setProperty(
-        "--chibi-x",
-        `${x * 8}px`
-      );
-
-
-      heroChibi.style.setProperty(
-        "--chibi-y",
-        `${y * 6}px`
-      );
-
-
-      heroChibi.style.setProperty(
-        "--chibi-rotate",
-        `${x * 2.5}deg`
-      );
-
-    }
-
-  );
-
-
-  heroVisual.addEventListener(
-    "pointerleave",
-
-    () => {
-
-      heroChibi.style.removeProperty(
-        "--chibi-x"
-      );
-
-
-      heroChibi.style.removeProperty(
-        "--chibi-y"
-      );
-
-
-      heroChibi.style.removeProperty(
-        "--chibi-rotate"
-      );
-
-    }
-
-  );
-
-}
-
-
-
-/* =========================================================
-   PROJECT CARD POINTER GLOW
-   DESKTOP ONLY
+   PROJECT CARD POINTER EFFECT
 ========================================================= */
 
 const projectCards =
@@ -1316,8 +948,10 @@ const projectCards =
 
 
 if (
-  finePointer &&
-  !prefersReducedMotion
+  !reducedMotion &&
+  window.matchMedia(
+    "(pointer: fine)"
+  ).matches
 ) {
 
   projectCards.forEach(card => {
@@ -1331,34 +965,25 @@ if (
           card.getBoundingClientRect();
 
 
+        const x =
+          event.clientX -
+          rect.left;
+
+
+        const y =
+          event.clientY -
+          rect.top;
+
+
         card.style.setProperty(
           "--mouse-x",
-          `${event.clientX - rect.left}px`
+          `${x}px`
         );
 
 
         card.style.setProperty(
           "--mouse-y",
-          `${event.clientY - rect.top}px`
-        );
-
-      }
-
-    );
-
-
-    card.addEventListener(
-      "pointerleave",
-
-      () => {
-
-        card.style.removeProperty(
-          "--mouse-x"
-        );
-
-
-        card.style.removeProperty(
-          "--mouse-y"
+          `${y}px`
         );
 
       }
@@ -1372,114 +997,41 @@ if (
 
 
 /* =========================================================
-   ARROW INTERACTIONS
+   CHIBI INTERACTION
 ========================================================= */
 
-const arrows =
+const chibis =
   document.querySelectorAll(
-    ".section-arrow, .project-detail, .icon-btn, .footer-top"
+    ".chibi, .chibi-mini"
   );
 
 
-arrows.forEach(element => {
+if (!reducedMotion) {
 
-  element.addEventListener(
-    "pointerenter",
+  chibis.forEach(chibi => {
 
-    () => {
+    chibi.addEventListener(
+      "pointerenter",
 
-      element.classList.add(
-        "arrow-active"
-      );
+      () => {
 
-    }
+        chibi.classList.add(
+          "chibi-active"
+        );
 
-  );
+      }
 
-
-  element.addEventListener(
-    "pointerleave",
-
-    () => {
-
-      element.classList.remove(
-        "arrow-active"
-      );
-
-    }
-
-  );
-
-});
+    );
 
 
+    chibi.addEventListener(
+      "pointerleave",
 
-/* =========================================================
-   SMOOTH INTERNAL LINKS
-========================================================= */
+      () => {
 
-document
-  .querySelectorAll(
-    'a[href^="#"]'
-  )
-  .forEach(link => {
-
-    link.addEventListener(
-      "click",
-
-      event => {
-
-        const href =
-          link.getAttribute("href");
-
-
-        if (
-          !href ||
-          href === "#"
-        ) {
-
-          return;
-
-        }
-
-
-        let target;
-
-        try {
-
-          target =
-            document.querySelector(
-              href
-            );
-
-        } catch {
-
-          return;
-
-        }
-
-
-        if (!target)
-          return;
-
-
-        event.preventDefault();
-
-
-        closeNavigation();
-
-
-        target.scrollIntoView({
-
-          behavior:
-            prefersReducedMotion
-              ? "auto"
-              : "smooth",
-
-          block:
-            "start"
-
-        });
+        chibi.classList.remove(
+          "chibi-active"
+        );
 
       }
 
@@ -1487,10 +1039,199 @@ document
 
   });
 
+}
+
 
 
 /* =========================================================
-   FINAL ANGEL / DEVIL INTERACTION
+   HERO CHIBI MOUSE REACTION
+========================================================= */
+
+const heroVisual =
+  document.querySelector(
+    ".hero-visual"
+  );
+
+
+const heroChibi =
+  document.querySelector(
+    ".hero-chibi .chibi"
+  );
+
+
+if (
+  heroVisual &&
+  heroChibi &&
+  !reducedMotion &&
+  window.matchMedia(
+    "(pointer: fine)"
+  ).matches
+) {
+
+  heroVisual.addEventListener(
+    "pointermove",
+
+    event => {
+
+      const rect =
+        heroVisual
+          .getBoundingClientRect();
+
+
+      const centerX =
+        rect.left +
+        rect.width / 2;
+
+
+      const centerY =
+        rect.top +
+        rect.height / 2;
+
+
+      const relativeX =
+        (
+          event.clientX -
+          centerX
+        ) / rect.width;
+
+
+      const relativeY =
+        (
+          event.clientY -
+          centerY
+        ) / rect.height;
+
+
+      const moveX =
+        relativeX * 12;
+
+
+      const moveY =
+        relativeY * 8;
+
+
+      const rotate =
+        relativeX * 3;
+
+
+      heroChibi.style.transform =
+        `translate(${moveX}px, ${moveY}px) rotate(${rotate}deg)`;
+
+    }
+
+  );
+
+
+  heroVisual.addEventListener(
+    "pointerleave",
+
+    () => {
+
+      heroChibi.style.transform = "";
+
+    }
+
+  );
+
+}
+
+
+
+/* =========================================================
+   HERO FLOATING SYMBOL PARALLAX
+========================================================= */
+
+const hero =
+  document.querySelector(
+    ".hero"
+  );
+
+
+const floatingSymbols =
+  document.querySelectorAll(
+    ".floating-symbol"
+  );
+
+
+if (
+  hero &&
+  floatingSymbols.length &&
+  !reducedMotion &&
+  window.matchMedia(
+    "(pointer: fine)"
+  ).matches
+) {
+
+  hero.addEventListener(
+    "pointermove",
+
+    event => {
+
+      const rect =
+        hero.getBoundingClientRect();
+
+
+      const x =
+        (
+          event.clientX -
+          rect.left
+        ) / rect.width - 0.5;
+
+
+      const y =
+        (
+          event.clientY -
+          rect.top
+        ) / rect.height - 0.5;
+
+
+
+      floatingSymbols.forEach(
+        (symbol, index) => {
+
+          const strength =
+            (index + 1) * 7;
+
+
+          symbol.style.transform =
+            `translate(
+              ${x * strength}px,
+              ${y * strength}px
+            )`;
+
+        }
+
+      );
+
+    }
+
+  );
+
+
+  hero.addEventListener(
+    "pointerleave",
+
+    () => {
+
+      floatingSymbols.forEach(
+        symbol => {
+
+          symbol.style.transform = "";
+
+        }
+
+      );
+
+    }
+
+  );
+
+}
+
+
+
+/* =========================================================
+   ANGEL / DEVIL FINAL SECTION INTERACTION
 ========================================================= */
 
 const finalScene =
@@ -1514,91 +1255,23 @@ const devilSide =
 if (
   finalScene &&
   angelSide &&
-  devilSide
+  devilSide &&
+  !reducedMotion
 ) {
 
-  function setFinalState(
-    state
-  ) {
-
-    finalScene.classList.remove(
-      "angel-focus",
-      "devil-focus"
-    );
-
-
-    if (state) {
-
-      finalScene.classList.add(
-        state
-      );
-
-    }
-
-  }
-
-
-  if (finePointer) {
-
-    angelSide.addEventListener(
-      "pointerenter",
-
-      () => {
-
-        setFinalState(
-          "angel-focus"
-        );
-
-      }
-
-    );
-
-
-    devilSide.addEventListener(
-      "pointerenter",
-
-      () => {
-
-        setFinalState(
-          "devil-focus"
-        );
-
-      }
-
-    );
-
-
-    finalScene.addEventListener(
-      "pointerleave",
-
-      () => {
-
-        setFinalState(null);
-
-      }
-
-    );
-
-  }
-
-
-
-  /*
-    Mobile tap switching.
-  */
-
   angelSide.addEventListener(
-    "click",
+    "pointerenter",
 
     () => {
 
-      if (!finePointer) {
+      finalScene.classList.add(
+        "angel-focus"
+      );
 
-        setFinalState(
-          "angel-focus"
-        );
 
-      }
+      finalScene.classList.remove(
+        "devil-focus"
+      );
 
     }
 
@@ -1606,17 +1279,33 @@ if (
 
 
   devilSide.addEventListener(
-    "click",
+    "pointerenter",
 
     () => {
 
-      if (!finePointer) {
+      finalScene.classList.add(
+        "devil-focus"
+      );
 
-        setFinalState(
-          "devil-focus"
-        );
 
-      }
+      finalScene.classList.remove(
+        "angel-focus"
+      );
+
+    }
+
+  );
+
+
+  finalScene.addEventListener(
+    "pointerleave",
+
+    () => {
+
+      finalScene.classList.remove(
+        "angel-focus",
+        "devil-focus"
+      );
 
     }
 
@@ -1627,56 +1316,66 @@ if (
 
 
 /* =========================================================
-   PHONE PERFORMANCE
+   SMOOTH INTERNAL LINKS
 ========================================================= */
 
-let scrollTicking = false;
+document
+  .querySelectorAll(
+    'a[href^="#"]'
+  )
+  .forEach(anchor => {
+
+    anchor.addEventListener(
+      "click",
+
+      event => {
+
+        const href =
+          anchor.getAttribute("href");
 
 
-window.addEventListener(
-  "scroll",
+        if (
+          !href ||
+          href === "#"
+        ) {
 
-  () => {
+          return;
 
-    if (scrollTicking)
-      return;
-
-
-    scrollTicking = true;
+        }
 
 
-    requestAnimationFrame(
-      () => {
-
-        /*
-          Expose scroll position for optional
-          CSS effects without running heavy JS.
-        */
-
-        document.documentElement.style
-          .setProperty(
-            "--scroll-y",
-            `${window.scrollY}px`
-          );
+        const target =
+          document.querySelector(href);
 
 
-        scrollTicking = false;
+        if (!target)
+          return;
+
+
+        event.preventDefault();
+
+
+        target.scrollIntoView({
+
+          behavior:
+            reducedMotion
+              ? "auto"
+              : "smooth",
+
+          block: "start"
+
+        });
 
       }
+
     );
 
-  },
-
-  {
-    passive: true
-  }
-
-);
+  });
 
 
 
 /* =========================================================
-   ESCAPE KEY
+   KEYBOARD ACCESSIBILITY
 ========================================================= */
 
 document.addEventListener(
@@ -1684,123 +1383,32 @@ document.addEventListener(
 
   event => {
 
-    if (
-      event.key !== "Escape"
-    ) {
-
-      return;
-
-    }
-
-
-    closeNavigation();
-
-
-    if (
-      modal &&
-      modal.open
-    ) {
-
-      closeProjectModal();
-
-    }
-
-  }
-
-);
-
-
-
-/* =========================================================
-   RESIZE CLEANUP
-========================================================= */
-
-window.addEventListener(
-  "resize",
-
-  () => {
-
     /*
-      Prevent desktop/mobile menu state
-      conflicts after screen rotation
-      or resizing.
+      Close mobile menu with Escape
     */
 
     if (
-      window.innerWidth > 900
+      event.key === "Escape" &&
+      nav &&
+      nav.classList.contains("open")
     ) {
 
-      closeNavigation();
+      nav.classList.remove(
+        "open"
+      );
+
+
+      if (menuButton) {
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      }
 
     }
 
-  },
-
-  {
-    passive: true
   }
 
 );
-
-
-
-/* =========================================================
-   TOUCH FEEDBACK
-========================================================= */
-
-if (!finePointer) {
-
-  const tappableItems =
-    document.querySelectorAll(
-      ".btn, .project-detail, .section-arrow, .topics span, .role-list span"
-    );
-
-
-  tappableItems.forEach(item => {
-
-    item.addEventListener(
-      "touchstart",
-
-      () => {
-
-        item.classList.add(
-          "touch-active"
-        );
-
-      },
-
-      {
-        passive: true
-      }
-
-    );
-
-
-    item.addEventListener(
-      "touchend",
-
-      () => {
-
-        setTimeout(
-          () => {
-
-            item.classList.remove(
-              "touch-active"
-            );
-
-          },
-
-          180
-        );
-
-      },
-
-      {
-        passive: true
-      }
-
-    );
-
-  });
-
-}
